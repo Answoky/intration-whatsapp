@@ -1,0 +1,34 @@
+
+server:
+  port: 8081
+
+spring:
+  application:
+      name: demoservice
+  jpa:
+    generate-ddl: true
+    properties:
+      hibernate:
+        temp:
+          use_jdbc_metadata_defaults: false  
+# DataBase          
+  datasource:
+    platform: postgres
+    driver-class-name: org.postgresql.Driver
+    #url: jdbc:postgresql://192.168.0.204:5432/whatsApp?autoReconnect=true&prepareThreshold=0
+    url: jdbc:postgresql://172.30.0.104:6432/whatsApp?autoReconnect=true&prepareThreshold=0
+    username: postgres
+    password: N0v41p2014*
+# Redis
+  redis:
+      hostname: 172.30.0.107
+      port: 6379
+  main:
+      allow-bean-definition-overriding: true
+logging:
+  level:
+    org: INFO
+  pattern:
+    console: "%d{yyyy-MM-dd HH:mm:ss} - %msg%n"
+    file: "%clr(%d{yyyy-MM-dd HH:mm:ss.SSS}){faint} %clr(%5p) %clr(${PID}){magenta} %clr(---){faint} %clr([%15.15t]){faint} %clr(%-40.40logger{39}){cyan} %clr(:){faint} %m%n%wEx"
+  file: /var/log/novaip/${spring.application.name}.log
